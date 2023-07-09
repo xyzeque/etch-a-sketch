@@ -89,6 +89,14 @@ clearButton.addEventListener('click', () => {
     cell.style.borderColor = '';
   });
 });
+toggleGridLines.addEventListener('click', () => {
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((cell) => {
+    cell.style.border = 'none';
+  });
+});
+
+
 
 // Function to toggle the active state of a button
 function toggleActiveButton(button) {

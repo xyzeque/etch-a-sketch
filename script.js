@@ -3,7 +3,7 @@ const sizeSlider = document.querySelector('.size-slider');
 const sizeValue = document.querySelector('.size-value');
 const colorPicker = document.querySelector('.color-picker');
 const colorButton = document.querySelector('.color');
-const backgroundButton = document.querySelector('.background');
+const rainbowButton = document.querySelector('.rainbow');
 const eraserButton = document.querySelector('.eraser');
 const clearButton = document.querySelector('.clear');
 const toggleGridLines = document.querySelector('.toggle-border');
@@ -61,7 +61,15 @@ function drawCell(cell) {
   } else if (eraserButton.classList.contains('active')) {
     cell.style.backgroundColor = '';
     cell.style.borderColor = '';
+  } else if (rainbowButton.classList.contains('active')) {
+    cell.style.backgroundColor = getRandomColor();
   }
+}
+
+// Function to generate a random color
+function getRandomColor() {
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 100%, 50%)`;
 }
 
 // Event listener for the slider input
@@ -78,6 +86,9 @@ colorPicker.addEventListener('input', () => {
 // Event listeners for the tool buttons
 colorButton.addEventListener('click', () => {
   toggleActiveButton(colorButton);
+});
+rainbowButton.addEventListener('click', () => {
+  toggleActiveButton(rainbowButton);
 });
 eraserButton.addEventListener('click', () => {
   toggleActiveButton(eraserButton);

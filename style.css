@@ -27,6 +27,7 @@ main {
   text-align: center;
 }
 
+
 .wrapper {
   display: flex;
   gap: 32px;
@@ -38,13 +39,16 @@ main {
   height: 750px;
   background-color: #1d0236;
   border: solid 5px #6c09c3;
+  border-radius:4px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: center;
   align-items: center;
   text-align: center;
+  box-shadow: 0 0 10px rgb(231, 206, 253, 0.25);
 }
+
 
 button {
   outline: none;
@@ -76,8 +80,10 @@ button.active {
   display: flex;
   flex-wrap: wrap;
   border: solid 5px #6c09c3;
+  border-radius: 4px;
   height: 750px;
   width: 750px;
+  box-shadow: 0 0 10px rgb(231, 206, 253, 0.25);
 }
 
 .cell {
@@ -97,6 +103,12 @@ input.color-picker {
 
 .color-picker:hover {
   box-shadow: 0 0 50px rgb(231, 206, 253, 0.25);
+}
+
+.size-value {
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .size-slider {

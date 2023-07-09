@@ -1,6 +1,15 @@
 const container = document.querySelector('.container');
 const sizeSlider = document.querySelector('.size-slider');
 const sizeValue = document.querySelector('.size-value');
+const colorPicker = document.querySelector('.color-picker');
+const colorButton = document.querySelector('.color');
+const backgroundButton = document.querySelector('.background');
+const eraserButton = document.querySelector('.eraser');
+const clearButton = document.querySelector('.clear');
+const toggleGridLines = document.querySelector('.toggle-border');
+
+let isDrawing = false;
+let currentColor = 'black';
 
 // Function to create the grid
 function createGrid(size) {
@@ -26,6 +35,33 @@ function createGrid(size) {
 
   // Update the size value text
   sizeValue.textContent = `${size} x ${size}`;
+
+  // Add event listeners to the cells for drawing
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((cell) => {
+    cell.addEventListener('mousedown', () => {
+      isDrawing = true;
+      drawCell(cell);
+    });
+    cell.addEventListener('mouseenter', () => {
+      if (isDrawing) {
+        drawCell(cell);
+      }
+    });
+    cell.addEventListener('mouseup', () => {
+      isDrawing = false;
+    });
+  });
+}
+
+// Function to draw a cell
+function drawCell(cell) {
+  if (colorButton.classList.contains('active')) {
+    cell.style.backgroundColor = currentColor;
+  } else if (eraserButton.classList.contains('active')) {
+    cell.style.backgroundColor = '';
+    cell.style.borderColor = '';
+  }
 }
 
 // Event listener for the slider input
@@ -33,5 +69,34 @@ sizeSlider.addEventListener('input', () => {
   const gridSize = sizeSlider.value;
   createGrid(gridSize);
 });
+
+// Event listener for the color picker input
+colorPicker.addEventListener('input', () => {
+  currentColor = colorPicker.value;
+});
+
+// Event listeners for the tool buttons
+colorButton.addEventListener('click', () => {
+  toggleActiveButton(colorButton);
+});
+eraserButton.addEventListener('click', () => {
+  toggleActiveButton(eraserButton);
+});
+clearButton.addEventListener('click', () => {
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = '';
+    cell.style.borderColor = '';
+  });
+});
+
+// Function to toggle the active state of a button
+function toggleActiveButton(button) {
+  const buttons = document.querySelectorAll('.control button');
+  buttons.forEach((btn) => {
+    btn.classList.remove('active');
+  });
+  button.classList.add('active');
+}
 
 createGrid(16); // Generate initial grid

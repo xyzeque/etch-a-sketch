@@ -43,16 +43,33 @@ main {
   gap: 16px;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 button {
   outline: none;
   border: none;
   font-family: 'Courier New', Courier, monospace;
-  text-align: center;
+  font-weight: bold;
   padding: 16px;
   width: 200px;
   text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #6c09c3;
+  border-radius: 4px;
+  color: #e7cefd;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6c09c3;
+  color: #fff;
+  box-shadow: 0 0 50px rgb(231, 206, 253, 0.25);
+}
+
+button.active {
+  background-color: #6c09c3;
+  color: #fff;
 }
 
 .container {
@@ -71,7 +88,13 @@ button {
   box-sizing: border-box;
 }
 
-.color-picker {
+input.color-picker {
   width: 200px;
   height: 50px;
+  background-color: #6c09c3;
+  cursor: pointer;
+}
+
+.color-picker:hover {
+  box-shadow: 0 0 50px rgb(231, 206, 253, 0.25);
 }

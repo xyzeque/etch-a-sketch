@@ -24,6 +24,7 @@ main {
   font-size: 48px;
   font-weight: bold;
   margin: 32px;
+  text-align: center;
 }
 
 .wrapper {
@@ -40,7 +41,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
 }
 

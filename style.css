@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+
+body {
   background-color: #130222;
   color: #e7cefd;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 main {
@@ -16,8 +21,37 @@ main {
 
 .title {
   color: #5f08aa;
-  font-size: 32px;
+  font-size: 48px;
   font-weight: bold;
+  margin: 32px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 32px;
+}
+
+.control {
+  padding: 16px;
+  width: 250px;
+  height: 750px;
+  background-color: #6c09c3;
+  border: solid 5px #6c09c3;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+button {
+  outline: none;
+  border: none;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  padding: 16px;
+  width: 200px;
+  text-transform: uppercase;
 }
 
 .container {

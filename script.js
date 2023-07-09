@@ -89,12 +89,22 @@ clearButton.addEventListener('click', () => {
     cell.style.borderColor = '';
   });
 });
+// Event listener for the grid lines toggle button
 toggleGridLines.addEventListener('click', () => {
   const cells = document.querySelectorAll('.cell');
+  const isGridLinesEnabled = cells[0].style.border !== 'none';
+
   cells.forEach((cell) => {
-    cell.style.border = 'none';
+    if (isGridLinesEnabled) {
+      cell.style.border = 'none';
+    } else {
+      cell.style.border = '1px solid black';
+    }
   });
+
+  toggleActiveButton(null); // Remove active state from tool buttons
 });
+
 
 // Function to toggle the active state of a button
 function toggleActiveButton(button) {

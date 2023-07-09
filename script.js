@@ -96,15 +96,17 @@ toggleGridLines.addEventListener('click', () => {
   });
 });
 
-
-
 // Function to toggle the active state of a button
 function toggleActiveButton(button) {
   const buttons = document.querySelectorAll('.control button');
   buttons.forEach((btn) => {
-    btn.classList.remove('active');
+    if (btn !== button) {
+      btn.classList.remove('active');
+    } else {
+      btn.classList.toggle('active');
+    }
   });
-  button.classList.add('active');
 }
+
 
 createGrid(16); // Generate initial grid

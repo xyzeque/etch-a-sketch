@@ -1,16 +1,37 @@
-const container = document.querySelector('.container')
+const container = document.querySelector('.container');
+const sizeSlider = document.querySelector('.size-slider');
+const sizeValue = document.querySelector('.size-value');
 
-// Create the grid
+// Function to create the grid
 function createGrid(size) {
-  // Calculate the total number of cells
-  const totalCells = size * size;
+  // Clear the existing grid
+  container.innerHTML = '';
+
+  // Calculate the cell size
+  const cellSize = `${100 / size}%`;
+
+  // Set the grid size and cell size using flexbox
+  container.style.flexWrap = 'wrap';
+  container.style.width = '750px';
+  container.style.height = '750px';
 
   // Create and append the cells to the container
-  for (let i = 0; i < totalCells; i++) {
+  for (let i = 0; i < size * size; i++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
+    cell.style.flexBasis = cellSize;
+    cell.style.height = cellSize;
     container.appendChild(cell);
   }
+
+  // Update the size value text
+  sizeValue.textContent = `${size} x ${size}`;
 }
 
-createGrid(16); // Generate grid
+// Event listener for the slider input
+sizeSlider.addEventListener('input', () => {
+  const gridSize = sizeSlider.value;
+  createGrid(gridSize);
+});
+
+createGrid(16); // Generate initial grid
